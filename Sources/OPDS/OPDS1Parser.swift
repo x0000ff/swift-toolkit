@@ -157,6 +157,10 @@ public class OPDS1Parser: Loggable {
                     properties["numberOfItems"] = facetElementCount
                 }
 
+                if let content = entry.firstChild(tag: "content")?.stringValue {
+                    properties["content"] = content
+                }
+
                 let newLink = Link(
                     href: absoluteHref,
                     mediaType: link.attr("type").flatMap { MediaType($0) },
